@@ -1,38 +1,81 @@
-.App {
+body {
+  font-family: "Manrope", sans-serif;
+}
+.col-4 {
+  background-image: url("../src/assets/img/banner\ splash.png") !important;
+  height: 100vh;
+  position: relative;
+}
+.text-white {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
   text-align: center;
+  margin-left: 80px;
+  margin-right: 80px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.heading-font {
+  font-weight: 400;
+  font-size: 54px;
+  padding-bottom: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.text-register {
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  color: #cb001e;
+  padding-top: 10px;
+}
+
+label {
+  font-weight: 600;
+}
+
+label span {
+  color: #cb001e;
+}
+
+.leftbar {
+  width: 5%;
+  height: 100vh;
+}
+
+.navbar {
+  height: 10%;
+}
+.content {
+  height: 90%;
+  border-left: solid 1px rgb(219, 219, 219);
+  border-top: solid 1px rgb(219, 219, 219);
+  background-color: #f5f6fa;
+}
+
+.h-12 {
+  font-size: 12px;
+}
+
+.h-23 {
+  font-size: 23px;
+  font-weight: 600;
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 424px) {
+  .heading-font {
+    font-size: 24px;
+  }
+  .text-white {
+    font-size: 10px;
+    margin: 10px;
+    line-height: 13px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 768px) {
+  .heading-font {
+    font-size: 44px;
   }
 }
