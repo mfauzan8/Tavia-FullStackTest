@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/img/logo-kaon.png'
+import { axiosInstance } from '../utils/axiosInstance';
 
 const Register = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [hp, setHp] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axiosInstance.post('/register', {
+            email: email,
+            password: password,
+            hp: hp
+        }).then((response) => {
+            console.log(response)
+        }
+        ).catch((error) =>
+            console.log(error))
+    }
+
     return (
         <div className="container-fluid">
             <div className='row'>
@@ -20,18 +38,21 @@ const Register = () => {
                             <div className='heading-font'>
                                 Register
                             </div>
-                            <form>
+                            <form onSubmit={(e) => handleSubmit(e)}>
                                 <div className="mb-3">
                                     <label className="form-label">HP <span>*</span></label>
-                                    <input type="text" className="form-control" />
+                                    <input type="text" className="form-control-auth" placeholder='HP' value={hp}
+                                        onChange={(e) => setHp(e.target.value)} />
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label">Email <span>*</span></label>
-                                    <input type="email" className="form-control" />
+                                    <input type="email" className="form-control-auth" placeholder='Email' value={email}
+                                        onChange={(e) => setEmail(e.target.value)} />
                                 </div>
                                 <div className="mb-5">
                                     <label className="form-label">Password <span>*</span></label>
-                                    <input type="password" className="form-control" />
+                                    <input type="password" className="form-control-auth" placeholder='Password' value={password}
+                                        onChange={(e) => setPassword(e.target.value)} />
                                 </div>
                                 <button type="submit" className="btn btn-danger w-100 rounded-pill">Register</button>
                             </form>

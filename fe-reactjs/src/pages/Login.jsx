@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/img/logo-kaon.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { axiosInstance } from '../utils/axiosInstance'
+import Auth from '../utils/Auth'
 
 const Login = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axiosInstance.post('/login', {
+            email: email,
+            password: password
+        }).then((response) => {
+            Auth.storeUserInfoToCookie(response.data.data.token)
+            navigate('/homepage')
+        })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
     return (
         <div className="container-fluid">
             <div className='row'>
@@ -21,14 +40,20 @@ const Login = () => {
                             <div className='heading-font'>
                                 Get Started
                             </div>
-                            <form>
+                            <form onSubmit={(e) => handleSubmit(e)}>
                                 <div className="mb-3">
                                     <label className="form-label">Email <span>*</span></label>
-                                    <input type="email" className="form-control" />
+                                    <input type="email" className="form-control-auth" placeholder='Email'
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
                                 </div>
                                 <div className="mb-5">
                                     <label className="form-label">Password <span>*</span></label>
-                                    <input type="password" className="form-control" />
+                                    <input type="password" className="form-control-auth" placeholder='Password'
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
                                 </div>
                                 <button type="submit" className="btn btn-danger w-100 rounded-pill">Login</button>
                             </form>
