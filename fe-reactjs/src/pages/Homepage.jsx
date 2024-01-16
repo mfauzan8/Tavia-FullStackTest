@@ -43,7 +43,7 @@ const Homepage = () => {
                     </div>
                     <div className='d-flex flex-column gap-2' style={{ width: '36%' }}>
                         {orderlists.map((list, index) => (
-                            <div className="card" style={{ borderStyle: 'none' }}>
+                            <div className="card" key={index} style={{ borderStyle: 'none' }}>
                                 <div className="d-flex p-3 gap-2 " style={{ height: '20%' }}>
                                     <div className="h-23">{index + 1}.</div>
                                     <div className="d-flex flex-column">
