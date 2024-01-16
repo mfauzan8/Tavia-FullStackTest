@@ -75,6 +75,14 @@ label span {
   outline: 0;
 }
 
+.button-logout {
+  margin-top: auto;
+}
+
+.button-logout:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 424px) {
   .heading-font {

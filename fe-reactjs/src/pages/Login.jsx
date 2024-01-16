@@ -15,7 +15,7 @@ const Login = () => {
             email: email,
             password: password
         }).then((response) => {
-            Auth.storeUserInfoToCookie(response.data.data.token)
+            Auth.storeUserInfoToCookie(response.data.token)
             navigate('/homepage')
         })
             .catch((error) => {
@@ -40,7 +40,7 @@ const Login = () => {
                             <div className='heading-font'>
                                 Get Started
                             </div>
-                            <form onSubmit={(e) => handleSubmit(e)}>
+                            <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label className="form-label">Email <span>*</span></label>
                                     <input type="email" className="form-control-auth" placeholder='Email'
